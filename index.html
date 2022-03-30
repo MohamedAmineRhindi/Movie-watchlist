@@ -11,42 +11,23 @@
         <header>
             <div class="header-container">
                 <h1>Find your film</h1>
-                <a href="#">My watchlist</a>
+                <a href="mywatchlist.html">My watchlist</a>
             </div>
         </header>
-        <div class="search-bar">
+        <form class="search-bar" id="search-form">
             <p><ion-icon name="search-sharp"></ion-icon></p>
-            <input class="search-input" type="text" placeholder="Search movie">
-            <a class="search-btn" href="#">Search</a>
-        </div>
+            <input class="search-input" type="text" placeholder="Search movie" id="search-input">
+            <button class="search-btn" href="#" type="submit" id="search-btn">Search</button>
+        </form>
         
-        <main class="results-container">
-            <div class="result-container">
-                <img src="./img/testImage.png" class="movie-image">
-                <div class="movie-info-container">
-                    <h2>Blade runner <span class="movie-score">⭐ 8.1</span></h2>
-                    <div class="movie-info">
-                        <p>116 min</p><p>Drama, Mystery, Sci-fi</p><div class="add-movie-box"><button class="add-delete-movie">+</button><p>Watchlist</p></div>
-                    </div>
-                    <p class="movie-synopsis">A blade runner must pursue and terminate four replicants who stole a ship in space, and have returned to Earth to find their creator.</p>
-                </div>
-            </div>
-
-            <div class="result-container">
-                <img src="./img/testImage.png" class="movie-image">
-                <div class="movie-info-container">
-                    <h2>Blade runner <span class="movie-score">⭐ 8.1</span></h2>
-                    <div class="movie-info">
-                        <p>116 min</p><p>Drama, Mystery, Sci-fi</p><div class="add-movie-box"><button class="add-delete-movie">+</button><p>Watchlist</p></div>
-                    </div>
-                    <p class="movie-synopsis">A blade runner must pursue and terminate four replicants who stole a ship in space, and have returned to Earth to find their creator.</p>
-                </div>
-            </div>
+        <main class="results-container" id="search-results">
+            
         </main>
         <footer>
             <!-- <p>Powered by OMDb API</p> -->
         </footer>
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+        <script src="./index.js"></script>
     </body>
 </html>
