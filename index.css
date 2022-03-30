@@ -44,6 +44,17 @@ header a:focus {
     text-decoration: none;
 }
 
+.empty-search {
+    font-weight: 700;
+    font-size: 1.125rem;
+    color: #787878;
+    text-align: center;
+}
+
+.empty-search ion-icon {
+    font-size: 6rem;
+}
+
 h2 {
     font-weight: 500;
     font-size: 1.125rem;
@@ -142,6 +153,10 @@ header {
     width: 80%;
     max-width: 700px;
     margin: 0 auto;
+}
+
+.empty-search {
+    padding: 10em 0;
 }
 
 .result-container {
