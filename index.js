@@ -40,7 +40,7 @@ searchForm.addEventListener("submit", event => {
     searchInput.disabled = true
     searchBtn.disabled = true
     let sortedMoviesByYear = []
-    const url = `http://www.omdbapi.com/?apikey=ed083483&s=${searchInput.value}`
+    const url = `https://www.omdbapi.com/?apikey=ed083483&s=${searchInput.value}`
 
     fetch(url)
         .then(res => res.json())
@@ -48,7 +48,7 @@ searchForm.addEventListener("submit", event => {
             if (data.Search) {
                 sortedMoviesByYear = sortMoviesByYear(data)
             }
-            const urls = sortedMoviesByYear.map(movie => fetch(`http://www.omdbapi.com/?apikey=ed083483&i=${movie.imdbID}`))
+            const urls = sortedMoviesByYear.map(movie => fetch(`https://www.omdbapi.com/?apikey=ed083483&i=${movie.imdbID}`))
             return urls
         })
         .then(promiseArray => Promise.all(promiseArray))

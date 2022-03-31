@@ -28,7 +28,7 @@ function getEmptyWatchListHtml() {
 }
 
 
-Promise.all(savedMovies.map(imdbID => fetch(`http://www.omdbapi.com/?apikey=ed083483&i=${imdbID}`)))
+Promise.all(savedMovies.map(imdbID => fetch(`https://www.omdbapi.com/?apikey=ed083483&i=${imdbID}`)))
     .then(promiseArray => Promise.all(promiseArray))
     .then(responses => responses.map(res => res.json()))
     .then(responses => Promise.all(responses))
