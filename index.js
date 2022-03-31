@@ -2,18 +2,20 @@ const searchForm = document.getElementById("search-form")
 const searchResults = document.getElementById("search-results")
 const searchInput = document.getElementById("search-input")
 const searchBtn = document.getElementById("search-btn")
-let savedMovies = new Array()
-if (localStorage.getItem("movieList")) savedMovies = localStorage.getItem("movieList")
+const savedMoviesStr = localStorage.getItem("myMoviesImdbID")
+let savedMovies = savedMoviesStr ? JSON.parse(savedMoviesStr) : new Array()
+console.log(savedMovies)
 
 function getSearchResultHtml(movie) {
     const { Poster, Title, Year, imdbRating, Runtime, Genre, Plot } = movie
+    const btn = savedMovies.find(imdbID => imdbID === movie.imdbID) ? "-" : "+"
     return `
         <div class="result-container">
             <img src=${Poster} class="movie-image">
             <div class="movie-info-container">
                 <h2>${Title} (${Year})<span class="movie-score"> ⭐ ${imdbRating}</span></h2>
                 <div class="movie-info">
-                    <p>${Runtime}</p><p>${Genre}</p><div class="add-movie-box"><button class="add-delete-movie">+</button><p>Watchlist</p></div>
+                    <p>${Runtime}</p><p>${Genre}</p><div class="add-movie-box"><button class="add-delete-movie">${btn}</button><p>Watchlist</p></div>
                 </div>
                 <p class="movie-synopsis">${Plot}</p>
             </div>
@@ -58,11 +60,18 @@ searchForm.addEventListener("submit", event => {
             const addDeleteBtn = document.getElementsByClassName("add-delete-movie")
             for (let i = 0; i < addDeleteBtn.length; i++) {
                 addDeleteBtn[i].addEventListener("click", () => {
-                    console.log(data[i].Title)
-                    savedMovies.push(data[i].Title)
-                    localStorage.setItem("movieList", savedMovies)
-                    console.log(savedMovies)
-                    //addDeleteBtn[i].textContent = addDeleteBtn[i].textContent === "+" ? "-" : "+"
+                    if (!savedMovies.find(imdbID => imdbID === data[i].imdbID)) {
+                        savedMovies.unshift(data[i].imdbID)
+                        localStorage.setItem("myMoviesImdbID", JSON.stringify(savedMovies))
+                        console.log(savedMovies)
+                        addDeleteBtn[i].textContent = "-"
+                    } else {
+                        savedMovies = savedMovies.filter(imdbID => imdbID !== data[i].imdbID)
+                        localStorage.setItem("myMoviesImdbID", JSON.stringify(savedMovies))
+                        addDeleteBtn[i].textContent = "+"
+                        console.log(savedMovies)
+                    }
+
                 })
             }
             searchInput.disabled = false

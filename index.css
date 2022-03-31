@@ -17,17 +17,23 @@ h1 {
     font-size: 2.625rem;
 }
 
-header a {
+header a,
+main a {
     font-weight: 700;
     font-size: 0.875rem;
     color: #FFF;
     text-decoration: none;
     cursor: pointer;
+    padding-bottom: .25em;
 }
 
 header a:hover,
 header a:focus {
-    border-bottom: 3px solid #FFF;
+    border-bottom: 2px solid #FFF;
+}
+
+main a {
+    text-align: center;
 }
 
 .search-input{
@@ -156,7 +162,18 @@ header {
 }
 
 .empty-search {
-    padding: 10em 0;
+    padding: 10em 0 0;
+}
+
+main a {
+    align-self: center;
+    width: fit-content;
+    margin-top: 1em;
+}
+
+main a:hover,
+main a:focus {
+    transform: scale(1.1);
 }
 
 .result-container {
